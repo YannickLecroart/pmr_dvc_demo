@@ -9,6 +9,7 @@ jobs:
       - name: 'Predict with PMR RF Model'
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         run: |
 
           # ML workflow
