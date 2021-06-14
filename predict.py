@@ -64,7 +64,7 @@ def date_conversion(date, holidays):#convertir heures à prédire en features
 def predict():
 
 
-    model = joblib.load("model.pkl")
+    model = joblib.load("./model.pkl")
 
     pred_date =  "01-01-2021"
 
