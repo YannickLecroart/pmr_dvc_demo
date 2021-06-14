@@ -1,0 +1,23 @@
+name: model-CHD
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Predict with PMR RF Model'
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          # ML workflow
+          pip install -r requirements.txt
+          python predict.py
+          
+          echo "## Model Metrics" >> report.md
+          cat export_dataframe.csv >> report.md
+
+
+          # Write CML report
+          cml-send-comment report.md
